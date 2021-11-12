@@ -6,6 +6,12 @@ file and deserializes JSON file to instances:
 
 import sys, json
 import models
+from models.user import User
+from models.place import Place
+from models.state import State
+from models.city import City
+from models.amenity import Amenity
+from models.review import Review
 import os.path as path
 from models.base_model import BaseModel
 
@@ -44,4 +50,3 @@ class FileStorage:
                     v = eval(v["__class__"])(**v)
                     self.__objects[k] = v
 
-        
