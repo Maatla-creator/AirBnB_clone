@@ -8,11 +8,19 @@ import sys
 import models
 from models.base_model import BaseModel
 from models.engine.file_storage import FileStorage
-
+from models.user import User
+from models.place import Place
+from models.city import City
+from models.state import State
+from models.review import Review
+from models.amenity import Amenity
 
 class HBNBCommand(cmd.Cmd):
 
     prompt = "(hbnb) "
+    class_dict = {"BaseModel": BaseModel, "User": User, "Place": Place,
+                  "State": State, "City": City, "Amenity": Amenity,
+                  "Review": Review}
 
     def do_create(self, args):
         """
