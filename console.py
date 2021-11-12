@@ -150,50 +150,7 @@ class HBNBCommand(cmd.Cmd):
         """
         pass
 
-    def default(self, args):
-        """Method that deals with all instances of a command being preceeded by
-        a class name.
-        ex. User.all()
-        """
-        counter = 0
-        command_method = args.split('.')
-        specific_method = command_method[1].split('(')
-        if specific_method[0] == "count":
-            for key in models.storage.all().keys():
-                if key.split('.')[0] == command_method[0]:
-                    counter += 1
-            print(counter)
-        if specific_method[0] == "all":
-            self.do_all(command_method[0])
-        if specific_method[0] == "show":
-            current_id = specific_method[1].split(')')
-            self.do_show(command_method[0] + ' ' + current_id[0])
-        if specific_method[0] == "destroy":
-            current_id = specific_method[1].split(')')
-            self.do_destroy(command_method[0] + ' ' + current_id[0])
-        if specific_method[0] == "update":
-            all_entries = specific_method[1].split(')')
-            all_attributes = all_entries[0].split(',')
-            if '{' in all_attributes[1]:
-                for sets in range(1, len(all_attributes)):
-                    if sets == 1 and sets != len(all_attributes) - 1:
-                        first_set = all_attributes[sets].split('{')
-                        sending_set = first_set[1].split(':')
-                    elif sets == 1 and sets == len(all_attributes) - 1:
-                        first_set = all_attributes[sets].split('{')
-                        first_set = first_set[1].split('}')
-                        sending_set = first_set[0].split(':')
-                    elif sets == len(all_attributes) - 1:
-                        first_set = all_attributes[sets].split('}')
-                        sending_set = first_set[0].split(':')
-                    else:
-                        sending_set = all_attributes[sets].split(':')
-                    self.do_update(command_method[0] + ' ' +
-                                   all_attributes[0] + ' ' +
-                                   sending_set[0] + sending_set[1])
-            else:
-                self.do_update(command_method[0] + ' ' + all_attributes[0] +
-                               all_attributes[1] + all_attributes[2])
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
+    
