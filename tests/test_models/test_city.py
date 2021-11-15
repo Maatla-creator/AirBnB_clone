@@ -49,3 +49,7 @@ class cityTest(unittest.TestCase):
         self.assertEqual(new_dict['__class__'], 'City')
         self.assertEqual(str(type(new_dict['created_at'])), "<class 'str'>")
         self.assertEqual(str(type(new_dict['updated_at'])), "<class 'str'>")
+
+
+if __name__ == "__main__":
+    unittest.main()

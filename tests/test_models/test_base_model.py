@@ -11,8 +11,6 @@ from datetime import datetime
 from models.base_model import BaseModel
 
 
-
-
 class TestBaseModel(unittest.TestCase):
     '''
     Test cases for base_model class
@@ -106,3 +104,7 @@ class TestBaseModel(unittest.TestCase):
         new_instance = self.new_instance
         new_instance.name = "Holberton"
         self.assertEqual(new_instance.name, "Holberton")
+
+
+if __name__ == "__main__":
+    unittest.main()
