@@ -4,7 +4,8 @@ Class FileStorage serializes instances to a JSON
 file and deserializes JSON file to instances:
 """
 
-import sys, json
+
+import json
 import models
 from models.user import User
 from models.place import Place
@@ -15,8 +16,8 @@ from models.review import Review
 import os.path as path
 from models.base_model import BaseModel
 
-class FileStorage:
 
+class FileStorage:
     """class FileStorage"""
     __file_path = "file.json"
     __objects = {}
@@ -32,7 +33,6 @@ class FileStorage:
 
     def save(self):
         """serializes __objects to the JSON file (path: __file_path)"""
-
         new_dictionary = {}
         with open(self.__file_path, mode="w", encoding='UTF-8') as f:
             for k, v in self.__objects.items():
@@ -43,10 +43,8 @@ class FileStorage:
         """deserializes the JSON file to __objects (only if the JSON file
         (__file_path) exists ; otherwise, do nothing. If the file doesn’t
         exist, no exception should be raised)"""
-
         if path.isfile(self.__file_path):
             with open(self.__file_path, mode="r", encoding='UTF-8') as f:
                 for k, v in (json.load(f)).items():
                     v = eval(v["__class__"])(**v)
                     self.__objects[k] = v
-

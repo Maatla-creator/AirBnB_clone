@@ -2,9 +2,12 @@
 """
 Class BaseModel defines all common attributes/methods for other classes
 """
+
+
 from datetime import datetime
 import uuid
 import models
+
 
 class BaseModel:
     """Class BaseModel"""
@@ -12,7 +15,6 @@ class BaseModel:
         """
         constructor(*args and **kwargs of a BaseModel
         regenerates a unique id for each BaseModel
-
         """
         if len(kwargs) > 0:
             for k, v in kwargs.items():

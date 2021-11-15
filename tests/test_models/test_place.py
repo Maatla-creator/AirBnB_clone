@@ -130,3 +130,7 @@ class placeTest(unittest.TestCase):
         """
         self.assertEqual(str(type(self.new_inst.amenity_ids)),
                          "<class 'list'>")
+
+
+if __name__ == "__main__":
+    unittest.main()
