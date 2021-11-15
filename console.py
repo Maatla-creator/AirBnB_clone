@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """Method Command Interpreter"""
 
+
 import shlex
 import inspect
 import cmd
@@ -37,6 +38,7 @@ class HBNBCommand(cmd.Cmd):
             else:
                 print("** class doesn't exist **")
 
+
     def do_show(self, args):
         """Prints the string representation of a specific instance
         Usage: show <class name> <id>
@@ -54,6 +56,7 @@ class HBNBCommand(cmd.Cmd):
                 print(models.storage.all()[key_value])
             except KeyError:
                 print("** no instance found **")
+
 
     def do_destroy(self, args):
         """Deletes an instance
@@ -73,6 +76,7 @@ class HBNBCommand(cmd.Cmd):
                 models.storage.save()
             except KeyError:
                 print("** no instance found **")
+
 
     def do_all(self, args):
         """Prints a string representation of all instances, can include class
@@ -97,6 +101,7 @@ class HBNBCommand(cmd.Cmd):
             for key, value in models.storage.all().items():
                 new_list.append(str(models.storage.all()[key]))
             print(new_list)
+
 
     def do_update(self, args):
         """Update an instance.
@@ -127,15 +132,18 @@ class HBNBCommand(cmd.Cmd):
                 setattr(new_dict[key], strings[2], strings[3])
                 models.storage.save()
 
+
     def do_quit(self, args):
         """Quit command to exit the program
         """
         raise SystemExit
 
+
     def do_EOF(self, args):
         """Handles end of file condition
         """
         return True
+
 
     def do_help(self, args):
         """Get help on commands
@@ -145,10 +153,12 @@ class HBNBCommand(cmd.Cmd):
         """
         cmd.Cmd.do_help(self, args)
 
+
     def emptyline(self):
         """Doesn't execute anything when user enter an empty line
         """
         pass
+
 
     def default(self, args):
         """Method that deals with all instances of a command being preceeded by
@@ -194,6 +204,7 @@ class HBNBCommand(cmd.Cmd):
             else:
                 self.do_update(command_method[0] + ' ' + all_attributes[0] +
                                all_attributes[1] + all_attributes[2])
+
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
