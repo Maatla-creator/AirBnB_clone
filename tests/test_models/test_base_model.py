@@ -1,8 +1,16 @@
 #!/usr/bin/python3
 
+"""
+Module test_base_model
+Contains the test cases for module base_model
+"""
+
 import unittest
+import models
+from datetime import datetime
 from models.base_model import BaseModel
-import datetime
+
+
 
 
 class TestBaseModel(unittest.TestCase):
